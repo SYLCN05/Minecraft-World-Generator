@@ -1,10 +1,18 @@
-namespace RealWorldBiomeMapCreator.Height;
+using SixLabors.ImageSharp.PixelFormats;
 
-public static class HeightMapper
+namespace RealWorldBiomeMapCreator.Height
 {
-    // Return height between 0 and 384
-    public static int GetHeight()
+    public static class HeightMapper
     {
-        return 62; // 62 is sealevel
+        public static int GetHeight(Rgba32 color)
+        {
+            // Bereken de helderheid van de kleur (gemiddelde van R, G en B)
+            double brightness = (color.R + color.G + color.B) / 3.0;
+
+            // Schaal de helderheid naar een hoogte tussen 0 en 384
+            int height = (int)(brightness / 255.0 * 384);
+
+            return height;
+        }
     }
 }

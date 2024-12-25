@@ -25,7 +25,8 @@ namespace RealWorldBiomeMapCreator.Tiles
                 {
                     Rgba32 pixelColor = imageTile[x, y];
                     Biome biome = BiomeMapper.DetermineBiome(pixelColor);
-                    int surfaceHeight = HeightMapper.GetHeight();
+
+                    int surfaceHeight = HeightMapper.GetHeight(pixelColor);
 
                     Console.WriteLine($"Pixel ({x},{y}) heeft kleur ({pixelColor.R},{pixelColor.G},{pixelColor.B}) en is biome {biome} en hoogte is {surfaceHeight}");
                 }
